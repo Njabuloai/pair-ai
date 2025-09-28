@@ -4,162 +4,194 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nexus pair site</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
-      margin: 0;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-    }
-
-    video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -1;
+      margin: 0;
+      background:  url("https://files.catbox.moe/8woj20.jpeg"); /* set the background image */
+      font-family: Arial, sans-serif;
     }
 
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100%;
-      color: #333;
     }
 
     .box {
-      width: 330px;
-      height: 360px;
+      width: 300px;
+      height: 320px;
       padding: 20px;
+      position: relative;
       text-align: center;
-      background: url("https://files.catbox.moe/ig9w4q.jpg") no-repeat center/cover;
-      background-size: cover;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(0, 128, 255, 0.7);
-      opacity: 0;
-      animation: fadeIn 1s forwards;
+      background-image:  url("https://media-hosting.imagekit.io//169ca456b5544f32/InShot_20250128_101005267.mp4?Expires=1832656927&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=s-5DChgSnLcg29DrFnAxYyRWjgMMFktwbF0kwH6wePYqZkv33x4fQo35LwwiZiGARqTWL~KA~95mQL88bUuP6jt~I~1jteEF7Qojo4vuHdS9ultT56X~w6~V-QHn9u5qwC3QcVsEZiFhHcaQv8vCGfWKcbxsGEoh65UiS4G-TPMr8tDl2ILS-NZ6eR67n4JCW~VgLB2cdggnwBi2BjUrEHv-BwZT2tOXDkVTj2aGsOUEhdvtYSt6k1tozWpv8nxi4A66AXkUYazC84s9b0flRRnxqXRN2FRHCBzpiiad6a0pf3Ws2gOEckLb-j2vZd0Ki3UQ5WyxX4ATFyN2K6CtFA__"); /* set the background image */
+      border-radius: 10px;
+      transform: perspective(1000px) rotateY(0deg);
+      box-shadow: 0 0 20px rgba(250, 249, 249, 0.7);
+      position: relative;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    #text {
+      color: #f6f5f5;
+    }
+
+    .input-container input {
+      color: #f1eaea;
     }
 
     .centered-text {
-      text-align: center;
-      color: green;
+      color: #e9e4e4;
     }
 
     .input-container {
       display: flex;
-      margin-top: 10px;
-      background: linear-gradient(45deg, #007bff 0%, #32CD32 100%);
-      border-radius: 50px;
-      padding: 0.5rem;
-      width: 100%;
+      background: rgb(10, 10, 10);
+      border-radius: 1rem;
+      background: black;
+      box-shadow: black;
+      padding: 0.3rem;
+      gap: 0.3rem;
       max-width: 300px;
-      transition: all 0.3s ease;
+      width: 100%;
     }
 
     .input-container input {
-      border-radius: 50px;
+      border-radius: 0.8rem 0 0 0.8rem;
+      background: #e8e8e8;
+      box-shadow: inset 13px 13px 10px #dcdcdc, inset -13px -13px 10px #f4f4f4;
+      width: 100%;
+      flex-basis: 75%;
+      padding: 1rem;
       border: none;
-      padding: 0.8rem 1rem;
-      width: 70%;
-      transition: all 0.3s ease;
-      font-size: 1rem;
+      border-left: 2px solid #ecf2f8;
+      color: #000000;
+      transition: all 0.2s ease-in-out;
     }
 
     .input-container input:focus {
+      border-left: 2px solid #ecf1f6;
       outline: none;
-      box-shadow: 0 0 8px rgba(0, 128, 255, 0.7);
+      box-shadow: inset 13px 13px 10px #f0f2f3, inset -13px -13px 10px #f4f4f4;
     }
 
     .input-container button {
-      border: none;
-      border-radius: 50px;
+      flex-basis: 15%;
       padding: 1rem;
-      background: linear-gradient(135deg, #32CD32 0%, #007bff 100%);
+      background: #5935ac;
+      font-weight: 700;
+      letter-spacing: 0.3rem;
+      text-transform: uppercase;
       color: white;
-      font-weight: bold;
-      width: 30%;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
+      border: none;
+      width: 90%;
+      border-radius: 0 1rem 1rem 0;
+      transition: all 0.2s ease-in-out;
     }
 
     .input-container button:hover {
-      background: linear-gradient(135deg, #007bff 0%, #32CD32 100%);
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #c01736 0%, #8b17b6 100%);
     }
 
-    #waiting-message {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: white;
-      opacity: 0;
-      animation: fadeIn 1.5s forwards;
+    @media (max-width: 500px) {
+      .input-container {
+        flex-direction: column;
+      }
+
+      .input-container input {
+        border-radius: 0.8rem;
+      }
+
+      .input-container button {
+        padding: 0.4rem;
+        border-radius: 0.8rem;
+      }
     }
 
-    .bot {
-      margin-top: 20px;
+    .centered-text {
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px;
-      border-radius: 12px;
-      color: yellow;
-      box-shadow: 0 0 20px rgba(0, 128, 255, 0.7);
-      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 500px) {
+      .box {
+        width: 90%; 
+      }
+    }
+
+    @media (max-width: 500px) {
+      .input-container input {
+        border-radius: 0.8rem;
+        width: 80%; 
+      }
+
+      .input-container button {
+        padding: 1rem;
+        border-radius: 0.9rem;
+        width: 100%; 
+      }
     }
   </style>
 </head>
 <body>
-  <video autoplay muted loop>
-    <source src="https://files.catbox.moe/dvc8y2.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
   <div class="container">
-    <div class="box" id="box">
-      <h3 class="centered-text">𝑺𝑬𝑺𝑺𝑰𝑶𝑵 𝑺𝑪𝑨𝑵𝑵𝑬𝑹</h3>
-      <h6 class="centered-text">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 (+).</h6>
-      <h6 class="centered-text">DULLAH-MD</h6>
-
-      <div class="input-container">
-        <input placeholder="Eg 255xxxxxx" type="number" id="number" name="number">
-        <button id="submit">Enter</button>
+    <div class="main">
+      <div class="box" id="box">
+        <div id="text">
+          <i class="fa fa-user"></i>
+          <p>
+            <h3 class="centered-text"> RAHMANI-XMD SESSION SCANNER</h3>
+            <br>
+            <h6>Coded by Pkdriller .</h6>
+            <h6>Enter Your Number with Country Code.</h6>
+            <div class="input-container">
+              <input placeholder="255693xxxx" type="number" id="number" placeholder="Enter your Phone Pumber with Cuntry Code" name="">
+              <button id="submit">Submit</button>
+            </div>
+            
+            <a id="waiting-message" class="centered-text" style="display: none;">Please wait a while</a>
+            <br>
+            <br>
+            <main id="pair"></main>
+          </p>
+        </div>
       </div>
-
-      <a id="waiting-message" class="centered-text" style="display: none;">Getting Code...</a>
-      <br><br>
-      <main id="pair" class="bot"></main>
     </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
     let a = document.getElementById("pair");
     let b = document.getElementById("submit");
     let c = document.getElementById("number");
+    let box = document.getElementById("box");
+
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:orange;font-weight:bold";
+      obj.size = "5";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:white;font-weight-bold";
+        obj.size = "5";
+      }, 500);
+    }
 
     b.addEventListener("click", async (e) => {
       e.preventDefault();
       if (!c.value) {
-        a.innerHTML = '<a style="color: white; font-weight: bold;">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 (+).</a><br><br>';
+        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your WhatsApp number with Country Code</a><br><br>';
       } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<a style="color: white; font-weight: bold;">Invalid Number Format</a><br><br>';
+        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid Phone Number</a><br><br>';
       } else {
-        const bc = c.value.replace(/[^0-9]/g, "");
+        const France_King = c.value.replace(/[^0-9]/g, "");
         let bb = "";
         let bbc = "";
-        const cc = bc.split('');
+        const cc = France_King.split('');
         cc.map(a => {
           bbc += a;
           if (bbc.length == 3) {
@@ -172,11 +204,11 @@
         });
         c.type = "text";
         c.value = "+" + bb;
-        c.style = "color: black; font-size: 20px";
-        a.innerHTML = '<a style="color: white; font-weight: bold;">Generating Code...</a><br><br>';
-        let { data } = await axios(`/code?number=${bc}`);
-        let code = data.code || "Service is Currently Unavailable";
-        a.innerHTML = '<font id="copy" style="color: blue; font-weight: bold;" size="5">𝒀𝒐𝒖𝒓 𝑪𝒐𝒅𝒆: <span style="color: yellow; font-weight: bold;">' + code + '</span></font><br><br><br>';
+        c.style = "color:red;font-size:20px";
+        a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
+        let { data } = await axios(`/code?number=${France_King}`);
+        let code = data.code || "Service Unavailable";
+        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
       }
     });
   </script>
